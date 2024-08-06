@@ -21,7 +21,7 @@ mongoose.connection.on('connected',connected=>{
 
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'https://66b29232b3ff5c6cc32ac4e8--lustrous-pastelito-e4dcd8.netlify.app'
 }))
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json())
