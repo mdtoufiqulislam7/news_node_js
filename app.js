@@ -20,9 +20,20 @@ mongoose.connection.on('connected',connected=>{
 })
 
 
+const allowedOrigins = ['http://localhost:3000', 'https://66b29232b3ff5c6cc32ac4e8--lustrous-pastelito-e4dcd8.netlify.app'];
+
 app.use(cors({
-    origin: 'https://66b29232b3ff5c6cc32ac4e8--lustrous-pastelito-e4dcd8.netlify.app'
-}))
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
+    credentials: true, // If you need to allow cookies or authorization headers
+}));
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json())
 
