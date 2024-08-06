@@ -20,7 +20,7 @@ mongoose.connection.on('connected',connected=>{
 })
 
 
-const allowedOrigins = ['http://localhost:3000', 'https://66b29232b3ff5c6cc32ac4e8--lustrous-pastelito-e4dcd8.netlify.app'];
+const allowedOrigins = ['http://localhost:3000', 'https://rad-chebakia-e39ac1.netlify.app'];
 
 app.use(cors({
     origin: function (origin, callback) {
